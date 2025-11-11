@@ -9,7 +9,7 @@ public class ArrayRataNilai6 {
         int jumlahMhs = sc.nextInt();
 
         int [] nilaiMhs = new int [jumlahMhs];
-        int jumlahLulus = 0, jumlahTidakLulus =0;
+        int jumlahLulus = 0, jumlahTidakLulus = 0;
         double totalLulus = 0, totalTidakLulus = 0;
         double rataLulus, rataTidakLulus;
         
