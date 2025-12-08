@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class PengunjungCafe6 {
     static void daftarPengunjung(String... namaPengunjung) {
         System.out.println("Daftar Nama pengunjung:");
-        for(int i = 0; i < namaPengunjung.length; i++) {
-            System.out.println("- "+namaPengunjung[i]);
+
+        for(String nama : namaPengunjung) {
+            System.out.println("- " + nama);
         }
     }
 
