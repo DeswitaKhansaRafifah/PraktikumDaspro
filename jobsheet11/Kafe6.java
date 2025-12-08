@@ -30,25 +30,50 @@ public class Kafe6 {
         System.out.println("==============================");
         System.out.println("Silahkan pilih menu yang Anda inginkan.");
     }
-    public static int hitungTotalHarga(int pilihanMenu, int banyakItem) {
+    public static int hitungTotalHarga(int pilihanMenu, int banyakItem, String kodePromo) {
         int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
 
         int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
-        return hargaTotal;
+        int diskon = 0;
 
+        if (kodePromo.equals("DISKON50")) {
+            diskon = hargaTotal * 50 / 100;
+        } else if (kodePromo.equals("DISKON30")) {
+            diskon = hargaTotal * 30 / 100;
+        } else {
+            System.out.println("Kode promo invalid! Tidak ada diskon.");
+        }
+
+        System.out.println("Diskon diberikan: Rp " + diskon);
+        return hargaTotal - diskon;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         Menu("Budi", true, "DISKON30");
         
-        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
-        int pilihanMenu = sc.nextInt();
-        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
-        int banyakItem = sc.nextInt();
+        System.out.print("\nBerapa jenis menu yang ingin Anda pesan? ");
+        int jumlahMenu = sc.nextInt();
+        sc.nextLine();
 
-        int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem);
-        System.out.println("Total harga untuk pesanan Anda: Rp" + totalHarga);
+        int totalSemuaPesanan = 0;
+
+        for (int i = 1; i <= jumlahMenu; i++) {
+            System.out.print("\nMasukkan nomor menu ke-" + i + ": ");
+            int pilihanMenu = sc.nextInt();
+            System.out.print("Masukkan jumlah item: ");
+            int banyakItem = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Masukkan kode promo: ");
+            String kodePromo = sc.nextLine();
+
+            totalSemuaPesanan += hitungTotalHarga(pilihanMenu, banyakItem, kodePromo);
+        }
+
+        System.out.println("\n==========================================");
+        System.out.println("TOTAL KESELURUHAN PEMBAYARAN: Rp" + totalSemuaPesanan);
+        System.out.println("Terima kasih telah berbelanja di Resto Kafe!");
     }
 
 }
