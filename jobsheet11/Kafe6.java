@@ -30,6 +30,7 @@ public class Kafe6 {
         System.out.println("==============================");
         System.out.println("Silahkan pilih menu yang Anda inginkan.");
     }
+    
     public static int hitungTotalHarga(int pilihanMenu, int banyakItem, String kodePromo) {
         int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
 
